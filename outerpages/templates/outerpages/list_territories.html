@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h3 class="float-left">Territórios</h3>
+{% if request.user.is_staff %}
+<a href="{% url 'new_territory' %}" class="btn btn-success float-right">Criar novo</a>
+{% endif %}
+{% endblock header %}
+
+{% block content %}
+<script>
+    function delete_territory(id) {
+        $.ajax({
+            type: "DELETE",
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            url: "{{ HTTP_HOST }}/api/territory/" + id + "/",
+            data: {
+                csrfmiddlewaretoken: "{{ csrf_token }}"
+            },
+            contentType: 'application/json',
+            beforeSend: function () {
+                return confirm("Tem certeza que deseja excluir território?");
+            },
+            success: function (data, textStatus) {
+                alert("Território excluído com sucesso!");
+                location.reload();
+            },
+            error: function (XMLHttpRequest) {
+                alert(XMLHttpRequest.responseText);
+            }
+        });
+    }
+</script>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered" id="territories-list">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Número</th>
+                <th scope="col">Referência</th>
+                <th scope="col">Observações</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for territory in territories %}
+            <tr>
+                <td>{{ territory.id }}</td>
+                <td>{{ territory.number }}</td>
+                <td>{{ territory.name }}</td>
+                <td>{{ territory.notes }}</td>
+                <td>
+                    <div class="btn-group float-right" role="group" aria-label="actions">
+                        <a href="{% url 'show_territory' id=territory.id %}" class="btn btn-sm btn-dark">Ver</a>
+                        {% if request.user.is_staff %}
+                        <a href="{% url 'edit_territory' id=territory.id %}" class="btn btn-sm btn-dark">Editar</a>
+                        <a href="#" class="btn btn-sm btn-danger" onClick="delete_territory({{ territory.id }})" >Excluir</a>
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

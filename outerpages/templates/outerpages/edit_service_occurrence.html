@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h3 class="float-left">Editar saída de campo</h3>
+{% endblock header %}
+
+{% block content %}
+<form id="form-new-service-occurrence" class="p-3">
+    {% csrf_token %}
+
+    <div class="form-row">
+        <div class="col-md">
+            <div class="form-group">
+                <label for="date">Data:</label>
+                <input
+                    name="date"
+                    class="form-control"
+                    placeholder="Selecione uma data"
+                    type="text"
+                    id="date-selection"
+                    required="true"
+                    autocomplete="off"
+                    value="{{ service_occurrence.date|date:'d/m/Y' }}">
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-group">
+                <label for="territory-selection">Território:</label>
+                <select name="territory" class="form-control" id="territory-selection">
+                    {% for territory in territories %}
+                        <option
+                            value="{{ territory.id }}"
+                            {% if service_occurrence.territory_id == territory.id %}selected{% endif %}
+                        >{{ territory.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-group">
+                <label for="leader-selection">Dirigente:</label>
+                <select name="leader" class="form-control" id="leader-selection">
+                    {% for leader in leaders %}
+                        <option
+                            value="{{ leader.id }}"
+                            {% if service_occurrence.leader_id == leader.id %}selected{% endif %}
+                        >{{ leader.first_name }} {{ leader.last_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-group">
+                <label for="status-selection">Status:</label>
+                <select name="status" class="form-control" id="status-selection">
+                    <option value="F" {% if service_occurrence.status == 'F' %}selected{% endif %}>Finalizado</option>
+                    <option value="N" {% if service_occurrence.status == 'N' %}selected{% endif %}>Não iniciado</option>
+                    <option value="I" {% if service_occurrence.status == 'I' %}selected{% endif %}>Iniciado</option>
+                    <option value="C" {% if service_occurrence.status == 'C' %}selected{% endif %}>Continuado</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-group">
+                <label for="status-selection">Periodo:</label>
+                <select name="period" class="form-control" id="period-selection">
+                    <option value="" disabled selected>Selecione um período</option>
+                    <option value="M" {% if service_occurrence.period == 'M' %}selected{% endif %}>Manhã</option>
+                    <option value="A" {% if service_occurrence.period == 'A' %}selected{% endif %}>Tarde</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Salvar</button>
+</form>
+
+<script>
+    $(function () {
+        $("#date-selection").datepicker({ dateFormat: 'dd/mm/yy' });
+
+        $("#form-new-service-occurrence").submit((evt) => {
+            evt.preventDefault();
+            evt.stopPropagation();
+
+            const formData = new FormData(evt.target);
+            const date = $("#date-selection").datepicker("option", "dateFormat", "yy-mm-dd").val();
+
+            debugger;
+
+            const data = {
+                date: date,
+                leader: formData.get('leader'),
+                territory: formData.get('territory'),
+                status: formData.get('status'),
+                period: formData.get('period')
+            }
+
+            $.ajax({
+                type: "PUT",
+                data: JSON.stringify(data),
+                url: "{{ HTTP_HOST }}/api/service_ocurrence/{{ service_occurrence.id }}/",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("X-CSRFToken", formData.get('csrfmiddlewaretoken'));
+                },
+                success: function (data, textStatus) {
+                    alert("Saída de campo editada com sucesso!")
+                    location.replace("{{ HTTP_HOST }}/service_occurrence/list");
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.responseText);
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

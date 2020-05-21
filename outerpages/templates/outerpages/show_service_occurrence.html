@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h3 class="float-left">
+    Saída feita em {{ service_occurrence.date|date:'d/m/Y' }} - {% if service_occurrence.period == "M" %}Manhã{% elif service_occurrence.period == "A" %}Tarde{% else %}-{% endif %}</h3>
+{% endblock header %}
+
+{% block content %}
+<iframe
+    src="https://www.google.com/maps/d/embed?{{ service_occurrence.territory.map_url }}"
+    style="width:100%; height:500px;"></iframe>
+
+<div class="p-3">
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                <strong>Dirigido por:</strong>
+                <br />
+                {{ service_occurrence.leader.first_name }} {{ service_occurrence.leader.last_name }}
+            </p>
+            <p>
+                <strong>Status:</strong>
+                <br />
+                {% if service_occurrence.status == "F" %}<span class="text-success">Finalizado</span>{% endif %}
+                {% if service_occurrence.status == "C" %}<span class="text-secondary">Continuado</span></span>{% endif %}
+                {% if service_occurrence.status == "N" %}<span class="text-secondary">Não iniciado</span>{% endif %}
+                {% if service_occurrence.status == "I" %}<span class="text-secondary">Iniciado</span>{% endif %}
+            </p>
+            <p>
+                <strong>Observações:</strong>
+                <br />
+                {{ service_occurrence.territory.notes }}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

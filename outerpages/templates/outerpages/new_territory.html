@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h3 class="float-left">Criar nova território</h3>
+{% endblock header %}
+
+{% block content %}
+<form id="form-new-territory" class="p-3">
+    {% csrf_token %}
+
+    <div class="form-row">
+        <div class="col-md">
+            <div class="form-group">
+                <label for="date">Número:</label>
+                <input name="number" class="form-control" placeholder="Digite o número do território" type="number" min="0" id="territory-number"
+                    required="true">
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-group">
+                <label for="date">Referência:</label>
+                <input name="name" class="form-control" placeholder="Dê um ponto de referência" type="text" id="territory-name"
+                    required="true">
+            </div>
+        </div>
+        <div class="col-md">
+            <div class="form-group">
+                <label for="date">URL do mapa:</label>
+                <input name="map_url" class="form-control" placeholder="Digite a URL do mapa" type="text" id="territory-map-url"
+                    required="true">
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md">
+            <div class="form-group">
+                <label for="date">Observações:</label>
+                <textarea class="form-control" name="notes" id="territory-notes" placeholder="Ex.: Não bater em..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Salvar</button>
+</form>
+
+<script>
+    $(function () {
+        $("#form-new-territory").submit((evt) => {
+            evt.preventDefault();
+            evt.stopPropagation();
+
+            const formData = new FormData(evt.target);
+
+            const data = {
+                number: formData.get('number'),
+                name: formData.get('name'),
+                notes: formData.get('notes'),
+                map_url: formData.get('map_url')
+            }
+
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify(data),
+                url: "{{ HTTP_HOST }}/api/territory/new/",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("X-CSRFToken", formData.get('csrfmiddlewaretoken'));
+                },
+                success: function (data, textStatus) {
+                    alert("Território cadastrado com sucesso!")
+                    location.replace("{{ HTTP_HOST }}/territory/list");
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert(XMLHttpRequest.responseText);
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
