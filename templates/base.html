@@ -48,7 +48,6 @@
                             Meu usuário
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Editar</a>
                             <a
                                 class="dropdown-item {% if request.resolver_match.url_name == 'password_change' %}active{% endif %}"
                                 href="{% url 'password_change' %}"
