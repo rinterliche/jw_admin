@@ -12,16 +12,16 @@
     <thead>
         <tr>
             <th scope="col" colspan="7">
-                <form class="form-inline">
-                    <div class="form-group">
-                        <label for="filter-from" style="margin-right: 10px;">De:</label>
+                <form class="form-inline" id="filter-service-occurrences">
+                    <div class="form-group mr-2">
+                        <label for="filter-from" class="mr-2">De:</label>
                         <input type="text" class="form-control" id="filter-from">
                     </div>
-                    <div class="form-group">
-                        <label for="filter-until" style="margin: 0 10px;">Até:</label>
+                    <div class="form-group mr-2">
+                        <label for="filter-until" class="mr-2">Até:</label>
                         <input type="text" class="form-control" id="filter-until">
                     </div>
-                    <button class="btn btn-primary" style="margin-left: 10px;">Filtrar</button>
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
                 </form>
             </th>
         </tr>
@@ -71,7 +71,7 @@
     $(function() {
         const dateFormat = "dd/mm/yy";
         const $from = $("#filter-from");
-        const $to = $("#filter-until");
+        const $until = $("#filter-until");
 
         $from.datepicker({
             defaultDate: "+1w",
@@ -79,16 +79,16 @@
             numberOfMonths: 1
         })
         .on( "change", function() {
-            $to.datepicker("option", "minDate", getDate( this ));
+            $until.datepicker("option", "minDate", getDate(this));
         });
 
-        $to.datepicker({
+        $until.datepicker({
             defaultDate: "+1w",
             changeMonth: true,
             numberOfMonths: 1
         })
         .on( "change", function() {
-            $from.datepicker("option", "maxDate", getDate( this ));
+            $from.datepicker("option", "maxDate", getDate(this));
         });
 
         function getDate(element) {
@@ -96,12 +96,27 @@
 
             try {
                 date = $.datepicker.parseDate(dateFormat, element.value);
-            } catch( error ) {
+            } catch(error) {
                 date = null;
             }
 
             return date;
         }
+
+        $("#filter-service-occurrences").submit((evt) => {
+            evt.preventDefault();
+            evt.stopPropagation();
+
+            const from = $from.datepicker("option", "dateFormat", "yy-mm-dd").val();
+            const until = $until.datepicker("option", "dateFormat", "yy-mm-dd").val();
+
+            if ('URLSearchParams' in window) {
+                var searchParams = new URLSearchParams(window.location.search);
+                searchParams.set('from', from);
+                searchParams.set('until', until);
+                window.location.search = searchParams.toString();
+            }
+        });
     });
 </script>
 {% endblock content %}

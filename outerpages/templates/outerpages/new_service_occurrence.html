@@ -78,8 +78,6 @@
             const formData = new FormData(evt.target);
             const date = $("#date-selection").datepicker("option", "dateFormat", "yy-mm-dd").val();
 
-            debugger;
-
             const data = {
                 date: date,
                 leader: formData.get('leader'),
