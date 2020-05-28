@@ -109,7 +109,9 @@ def edit_territory_view(request, id):
 
 def list_service_occurrences_view(request):
     if request.user.is_staff:
-        service_occurrences = ServiceOccurrence.objects.all()
+        service_occurrences = ServiceOccurrence.objects.filter(
+            date__range=[request.GET.get("from", "2000-01-01"), request.GET.get("until", "2999-01-01")]
+        )
         return render(request, "outerpages/list_service_occurrences.html", {"service_occurrences": service_occurrences})
     else:
         return render(request, "outerpages/not_authorized.html", {})
