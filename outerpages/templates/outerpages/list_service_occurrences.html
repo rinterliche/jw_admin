@@ -69,17 +69,32 @@
 
 <script>
     $(function() {
+        const searchParams = new URLSearchParams(window.location.search);
         const dateFormat = "dd/mm/yy";
+
+        debugger;
+
         const $from = $("#filter-from");
         const $until = $("#filter-until");
 
-        $from.datepicker().on("change", function() {
+        $from.datepicker({ dateFormat: 'dd/mm/yy' })
+        .on("change", function() {
             $until.datepicker("option", "minDate", getDate(this));
         });
 
-        $until.datepicker().on("change", function() {
+        $until.datepicker({ dateFormat: 'dd/mm/yy' }).on("change", function() {
             $from.datepicker("option", "maxDate", getDate(this));
         });
+
+        if (searchParams.get("from")) {
+            const fromDate = searchParams.get("from").split("-").reverse().join("/");
+            $from.datepicker('setDate', fromDate);
+        }
+
+        if (searchParams.get("until")) {
+            const untilDate = searchParams.get("until").split("-").reverse().join("/");
+            $until.datepicker('setDate', untilDate);
+        }
 
         function getDate(element) {
             let date;
@@ -101,7 +116,6 @@
             const until = $until.datepicker("option", "dateFormat", "yy-mm-dd").val();
 
             if ('URLSearchParams' in window) {
-                var searchParams = new URLSearchParams(window.location.search);
                 searchParams.set('from', from);
                 searchParams.set('until', until);
                 window.location.search = searchParams.toString();
