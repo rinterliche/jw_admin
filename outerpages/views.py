@@ -1,5 +1,8 @@
+import json
+
 from django.shortcuts import render
 import json, datetime
+from datetime import timedelta
 
 from api.models import Territory, ServiceOccurrence
 from account.models import JWAdminUser
@@ -74,7 +77,28 @@ def service_week_screen_view(request):
 
 
 def list_territories_view(request):
-    territories = Territory.objects.all()
+    all_territories = Territory.objects.all()
+
+    territories = []
+
+    for t in all_territories:
+        t_last_service_occurrence = ServiceOccurrence.objects.filter(territory_id=t.id).last()
+
+        if t_last_service_occurrence:
+            date_30_days_ago = datetime.datetime.now() - timedelta(days=30)
+            date = t_last_service_occurrence.date
+            t_is_forgotten = date.strftime('%Y-%m-%d') <= date_30_days_ago.strftime('%Y-%m-%d')
+
+        territory = {
+            "id": t.id,
+            "number": t.number,
+            "name": t.name,
+            "last_service_occurrence_date": date,
+            "is_forgotten": t_is_forgotten,
+        }
+
+        territories.append(territory)
+
     return render(request, "outerpages/list_territories.html", {'territories': territories})
 
 

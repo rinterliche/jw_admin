@@ -41,17 +41,26 @@
                 <th scope="col">#</th>
                 <th scope="col">Número</th>
                 <th scope="col">Referência</th>
-                <th scope="col">Observações</th>
+                <th scope="col">Última saída em</th>
+                <th scope="col">Trabalhado recentemente?</th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
+            {% if territories|length > 0 %}
             {% for territory in territories %}
             <tr>
                 <td>{{ territory.id }}</td>
                 <td>{{ territory.number }}</td>
                 <td>{{ territory.name }}</td>
-                <td>{{ territory.notes }}</td>
+                <td>{{ territory.last_service_occurrence_date|date:'d/m/Y' }}</td>
+                <td>
+                    {% if territory.is_forgotten %}
+                    <i class="material-icons text-danger">clear</i>
+                    {% else %}
+                    <i class="material-icons text-success">done</i>
+                    {% endif %}
+                </td>
                 <td>
                     <div class="btn-group float-right" role="group" aria-label="actions">
                         <a href="{% url 'show_territory' id=territory.id %}" class="btn btn-sm btn-dark">Ver</a>
@@ -63,6 +72,11 @@
                 </td>
             </tr>
             {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="6">Nenhum território adicionado clique em "Criar novo"</td>
+            </tr>
+            {% endif %}
         </tbody>
     </table>
 </div>
