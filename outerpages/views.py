@@ -83,17 +83,22 @@ def list_territories_view(request):
 
     for t in all_territories:
         t_last_service_occurrence = ServiceOccurrence.objects.filter(territory_id=t.id).last()
+        last_service_occurrence_date = None
+        t_is_forgotten = None
 
         if t_last_service_occurrence:
+            import pdb
+            pdb.set_trace()
             date_30_days_ago = datetime.datetime.now() - timedelta(days=30)
-            date = t_last_service_occurrence.date
-            t_is_forgotten = date.strftime('%Y-%m-%d') <= date_30_days_ago.strftime('%Y-%m-%d')
+            last_service_occurrence_date = t_last_service_occurrence.date
+            t_is_forgotten = last_service_occurrence_date.strftime(
+                '%Y-%m-%d') <= date_30_days_ago.strftime('%Y-%m-%d')
 
         territory = {
             "id": t.id,
             "number": t.number,
             "name": t.name,
-            "last_service_occurrence_date": date,
+            "last_service_occurrence_date": last_service_occurrence_date,
             "is_forgotten": t_is_forgotten,
         }
 
