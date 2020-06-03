@@ -3,9 +3,20 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.utils.translation import gettext as _
 
 
+class JWAdminCongregation(models.Model):
+    class Meta:
+        verbose_name = "Congregação"
+        verbose_name_plural = "Congregações"
+
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return "JWAdmin congregation: {}".format(self.name)
+
+
 class JWAdminUserManager(BaseUserManager):
     class Meta:
-        verbose_name = "Suer user"
+        verbose_name = "Super user"
         verbose_name_plural = "Super users"
 
     def create_user(self, email, first_name, last_name, password=None):
@@ -58,6 +69,7 @@ class JWAdminUser(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+    congregation = models.ForeignKey(JWAdminCongregation, on_delete=models.CASCADE, default=1)
 
     objects = JWAdminUserManager()
 
