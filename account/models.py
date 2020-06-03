@@ -77,7 +77,7 @@ class JWAdminUser(AbstractBaseUser):
     REQUIRED_FIELDS = ['first_name', 'last_name',]
 
     def __str__(self):
-        return "JWAdmin user name: {} email: {}".format(self.first_name, self.email)
+        return "User name: {} email: {}".format(self.first_name, self.email)
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
