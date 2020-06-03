@@ -3,7 +3,7 @@ from .models import Territory, ServiceOccurrence
 
 
 class TerritoryAdmin(admin.ModelAdmin):
-    list_display = ('number', 'name', 'notes')
+    list_display = ('number', 'name', 'notes', 'congregation',)
     search_fields = ('number', 'name')
 
     ordering = ('number', 'name')
@@ -13,7 +13,7 @@ class TerritoryAdmin(admin.ModelAdmin):
 
 
 class ServiceOccurrenceAdmin(admin.ModelAdmin):
-    list_display = ('date', 'leader', 'territory', 'status', 'period',)
+    list_display = ('date', 'leader', 'territory', 'status', 'period', 'congregation',)
     search_fields = ('date',)
 
     ordering = ()

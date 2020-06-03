@@ -1,5 +1,5 @@
 from django.db import models
-from account.models import JWAdminUser
+from account.models import JWAdminUser, JWAdminCongregation
 from enum import Enum
 
 
@@ -12,6 +12,7 @@ class Territory(models.Model):
     name = models.CharField(max_length=50, default='')
     map_url = models.CharField(max_length=250, default='')
     notes = models.TextField(default='')
+    congregation = models.ForeignKey(JWAdminCongregation, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return "Territory number: {}".format(self.number)
@@ -40,6 +41,7 @@ class ServiceOccurrence(models.Model):
         (AFTERNOON, 'A'),
     )
 
+    congregation = models.ForeignKey(JWAdminCongregation, on_delete=models.CASCADE, default=1)
     leader = models.ForeignKey(JWAdminUser, on_delete=models.CASCADE)
     territory = models.ForeignKey(Territory, on_delete=models.CASCADE)
     date = models.DateField()
