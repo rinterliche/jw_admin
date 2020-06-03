@@ -77,7 +77,7 @@ def service_week_screen_view(request):
 
 
 def list_territories_view(request):
-    all_territories = Territory.objects.all()
+    all_territories = Territory.objects.filter(congregation=request.user.congregation.id)
 
     territories = []
 
@@ -87,8 +87,6 @@ def list_territories_view(request):
         t_is_forgotten = None
 
         if t_last_service_occurrence:
-            import pdb
-            pdb.set_trace()
             date_30_days_ago = datetime.datetime.now() - timedelta(days=30)
             last_service_occurrence_date = t_last_service_occurrence.date
             t_is_forgotten = last_service_occurrence_date.strftime(
@@ -139,6 +137,7 @@ def edit_territory_view(request, id):
 def list_service_occurrences_view(request):
     if request.user.is_staff:
         service_occurrences = ServiceOccurrence.objects.filter(
+            congregation=request.user.congregation.id,
             date__range=[request.GET.get("from", "2000-01-01"), request.GET.get("until", "2999-01-01")]
         )
         return render(request, "outerpages/list_service_occurrences.html", {"service_occurrences": service_occurrences})
@@ -148,8 +147,10 @@ def list_service_occurrences_view(request):
 
 def new_service_occurrence_view(request):
     if request.user.is_staff:
-        territories = Territory.objects.all()
-        leaders = JWAdminUser.objects.all()
+        territories = Territory.objects.filter(
+            congregation=request.user.congregation.id)
+        leaders = JWAdminUser.objects.filter(
+            congregation=request.user.congregation.id)
         return render(request, "outerpages/new_service_occurrence.html", {"territories": territories, "leaders": leaders})
     else:
         return render(request, "outerpages/not_authorized.html", {})
@@ -158,8 +159,10 @@ def new_service_occurrence_view(request):
 def edit_service_occurrence_view(request, id):
     if request.user.is_staff:
         service_occurrence = ServiceOccurrence.objects.get(id=id)
-        territories = Territory.objects.all()
-        leaders = JWAdminUser.objects.all()
+        territories = Territory.objects.filter(
+            congregation=request.user.congregation.id)
+        leaders = JWAdminUser.objects.filter(
+            congregation=request.user.congregation.id)
 
         return render(
             request,
@@ -172,8 +175,10 @@ def edit_service_occurrence_view(request, id):
 
 def show_service_occurrence_view(request, id):
     service_occurrence = ServiceOccurrence.objects.get(id=id)
-    territories = Territory.objects.all()
-    leaders = JWAdminUser.objects.all()
+    territories = Territory.objects.filter(
+        congregation=request.user.congregation.id)
+    leaders = JWAdminUser.objects.filter(
+        congregation=request.user.congregation.id)
 
     return render(
         request,
