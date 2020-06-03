@@ -69,7 +69,7 @@ class JWAdminUser(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    congregation = models.ForeignKey(JWAdminCongregation, on_delete=models.CASCADE, default=1)
+    # congregation = models.ForeignKey(JWAdminCongregation, on_delete=models.CASCADE, default=1)
 
     objects = JWAdminUserManager()
 
