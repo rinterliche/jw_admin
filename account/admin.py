@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import JWAdminUser
+from .models import JWAdminUser, JWAdminCongregation
 
 
 class JWAdminUserAdmin(UserAdmin):
@@ -13,4 +13,15 @@ class JWAdminUserAdmin(UserAdmin):
     fieldsets = ()
 
 
+class JWAdminCongregationAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
+
+    ordering = ('name',)
+    filter_horizontal = ()
+    list_filter = ()
+    fieldsets = ()
+
+
 admin.site.register(JWAdminUser, JWAdminUserAdmin)
+admin.site.register(JWAdminCongregation, JWAdminCongregationAdmin)
