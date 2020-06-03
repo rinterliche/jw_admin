@@ -1,0 +1,481 @@
+[
+{
+  "model": "account.jwadmincongregation",
+  "pk": 1,
+  "fields": {
+    "name": "Jd. Aricanduva"
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$0rFEdTqPxdei$XTgBx5eDWNJRQlxkANBY178A6D6xYnocYZpqXEjWw5c=",
+    "last_login": "2020-05-22T02:01:10.033Z",
+    "email": "luis86hot@gmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Luis",
+    "last_name": "C\u00e2ndido",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$kW7qC3qvLKVz$lmPIy8QZ4CsDy5oQluXrnz3JrQzgdi2QA0gDaNw+nsY=",
+    "last_login": "2020-05-22T02:16:33.714Z",
+    "email": "biaemaga@gmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Beatriz",
+    "last_name": "Pereira",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$AG87UF1jA2Rl$GxLGoo1EbfZGX8jQNR2Yitv8xI0/Qe/2PycddYKO1u4=",
+    "last_login": "2020-05-22T13:44:50.179Z",
+    "email": "viavidros@bol.com.br",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Antonio",
+    "last_name": "Schiavelli",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$u8kNe4ktGyJp$YS7JDNvKeROVpT3pvJZJKqZhGHZrfbSRqc+vlPHvWSg=",
+    "last_login": "2020-05-22T18:45:13.191Z",
+    "email": "diegosantos0686@gmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Diego",
+    "last_name": "Santos",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$s7nOUCwu9c1K$Po8l6imtB0QxHmDMjagqflwFdfpSCseNGyqbIetG184=",
+    "last_login": "2020-05-22T18:55:43.735Z",
+    "email": "lucas.jorgepl@gmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Lucas",
+    "last_name": "Jorge",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$HDNgfBgHXflL$KnCMYnIh6YpL8hXOz8ntB4BGkAu4f1j9hTRJ1zjCJG4=",
+    "last_login": "2020-05-22T19:55:45.921Z",
+    "email": "patyschiavelli@gmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Patricia",
+    "last_name": "De Lima",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$zpCDSWZyQPz7$zHu+/KzoX44xdbQIM0n6GNOvsWicPx9hXDz3tQ5jhTY=",
+    "last_login": "2020-05-22T20:14:37.777Z",
+    "email": "bela.martins64@gmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Belanizia",
+    "last_name": "Martins",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$ws9oc1LMLXJX$hXO3auTqCb3g+TEkpTgE41r48aKfQX0kM3p0HIpPuN4=",
+    "last_login": "2020-05-22T20:26:03.249Z",
+    "email": "marianacristina.adv@gmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Mariana",
+    "last_name": "Moreira",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$bKlDO85Cn14x$rZwO41O26dvsMQNfFXfsjeXmhBCYRYlnJQA5IKwXj8g=",
+    "last_login": "2020-05-22T21:19:13.458Z",
+    "email": "lucianoschiavellijaime@gmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Luciano",
+    "last_name": "Jaime",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 11,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$hOUV1cavlZyU$iYhoNqGCd4S0mMUZR99XAtfv/u7087GvUUxDCNsGiOw=",
+    "last_login": "2020-05-22T21:20:44.018Z",
+    "email": "angeloverta65@gmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Angelo",
+    "last_name": "Verta",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$ihMQQUiwAvz0$lz/QcoUdd/PWX61QhVc7IOAwiCdYR4v9bGaX/0tioQM=",
+    "last_login": "2020-05-22T22:49:54.224Z",
+    "email": "giovanimara06@gmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "giovani Santos",
+    "last_name": "Santos",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 13,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$JoN5WCPRyRi3$utPgzt4X62W/4S5w1BpVuKlVA5OT8pY4dRQk6jKh12Y=",
+    "last_login": "2020-05-22T22:53:58.107Z",
+    "email": "thais.almartins@gmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Tha\u00eds",
+    "last_name": "Martins",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 14,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$xLf9WNicEYIL$brO6AH44C7MCdqIvVpcLJZAQcvyQ5SVcRdYvFHPR6l0=",
+    "last_login": "2020-05-25T15:58:33.911Z",
+    "email": "rose_saturnino@hotmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Rose",
+    "last_name": "Saturnino",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 15,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$Fhyl58IK8p5f$h66MsPcokQo6zAT4I9xfQGJZpAHiHn4ilWGbQAtS1gU=",
+    "last_login": "2020-05-26T14:18:25.912Z",
+    "email": "paulastarbulov@hotmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "paula",
+    "last_name": "Magnanini",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 16,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$XwtDrdowGRAe$6z8YUAQzdsQnnlJMPRkFP03HuAMBFo7ykVz0DcTHx3w=",
+    "last_login": "2020-05-28T20:46:27.046Z",
+    "email": "vanessaesposito@hotmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Vanessa",
+    "last_name": "Santos",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 17,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$ubzD5uMHUWpe$gYLUWqCwx/NtAd2EndVZ6MicUnYXUs52P5Rc7XhJ9Rk=",
+    "last_login": "2020-05-28T21:12:25.559Z",
+    "email": "dsgma.interliche@gmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Dagma",
+    "last_name": "Interliche",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 18,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$5V2gT19kYUIy$deQBTVAAd8eN5/243dFSTOLa4TdIirA0FPoJxg+q07g=",
+    "last_login": "2020-05-29T17:54:43.066Z",
+    "email": "kormaibr@gmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Rodrigo",
+    "last_name": "Teste",
+    "congregation": 1
+  }
+},
+{
+  "model": "account.jwadminuser",
+  "pk": 19,
+  "fields": {
+    "password": "pbkdf2_sha256$180000$OdQM61Ik8srX$Teew9ipp0EGxAaw3Vc2JnymGlyGF6r9LT+/aj76oiXU=",
+    "last_login": "2020-05-30T18:40:55Z",
+    "email": "andersonluciana96@gmail.com",
+    "is_active": true,
+    "is_admin": false,
+    "first_name": "Anderson",
+    "last_name": "Gon\u00e7alves",
+    "congregation": 1
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 1,
+  "fields": {
+    "number": 1,
+    "name": "Largo do Carr\u00e3o",
+    "map_url": "mid=1Bplxz-vEdTFYiRIYYq3QFrnRN2BZdruf&ll=-23.553146828453258%2C-46.52646246137396&z=18",
+    "notes": "110 casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 2,
+  "fields": {
+    "number": 2,
+    "name": "Astarte",
+    "map_url": "mid=1_TocabSzVPQuPJD1hLU0NcxSswhrHnKk&ll=-23.551924399716757%2C-46.52496038666651&z=19",
+    "notes": "56 casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 3,
+  "fields": {
+    "number": 3,
+    "name": "Labirinto",
+    "map_url": "mid=15ipOmgyzmjA0-xNYO6I34l_8qBJVYElp&ll=-23.551576135517923%2C-46.52412227988069&z=18",
+    "notes": "150 casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 4,
+  "fields": {
+    "number": 4,
+    "name": "Academia Batalha",
+    "map_url": "mid=1Et92CzR8pQXSQo-4wstzecurMN65b7Fu&ll=-23.554434074870066%2C-46.52550634033306&z=18",
+    "notes": "? casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 5,
+  "fields": {
+    "number": 5,
+    "name": "Posto de Sa\u00fade",
+    "map_url": "mid=1nKxjSeJOFGjpySBEJZ-ADbcA_-PJ-Vge&ll=-23.55262065411686%2C-46.52371285838942&z=18",
+    "notes": "63 casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 6,
+  "fields": {
+    "number": 6,
+    "name": "Marmoaria Caja\u00edba",
+    "map_url": "mid=1THWNZq1Umin_iCqZdtGUDSFEBHkBB936&ll=-23.551393267328738%2C-46.523786916637114&z=18",
+    "notes": "26 casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 7,
+  "fields": {
+    "number": 7,
+    "name": "Em frente \u00e0 P\u00e7. Armindo Mazaro",
+    "map_url": "mid=19QGYaVGsJrkaSfjDVxET_WQmp_yP1jZ4&ll=-23.552621208952665%2C-46.5230115523726&z=18",
+    "notes": "? casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 8,
+  "fields": {
+    "number": 8,
+    "name": "Col\u00e9gio Isl\u00e2mico",
+    "map_url": "mid=1q_yoaBmH9peozxXd4VkI26cwFezc-yhS&ll=-23.555505336480433%2C-46.52447123995163&z=18",
+    "notes": "99 casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 9,
+  "fields": {
+    "number": 9,
+    "name": "Condom\u00ednio Varandas",
+    "map_url": "mid=15R9arqm4ivftqo9tqMrJ6RRSLw_VnfXm&ll=-23.55571184044931%2C-46.523120822696114&z=18",
+    "notes": "? casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 10,
+  "fields": {
+    "number": 10,
+    "name": "P\u00e7. Armindo Mazaro",
+    "map_url": "mid=14SvwVc-1oKUGsrYrUd87QZIjRFxFAlCA&ll=-23.553505805997393%2C-46.52293869293192&z=18",
+    "notes": "? Casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 11,
+  "fields": {
+    "number": 11,
+    "name": "A\u00e7a\u00ed Aricanduva",
+    "map_url": "mid=1TlLBQnrZ3i0OFypyeml3xYRsPSk7eAIC&ll=-23.552760052894183%2C-46.5210175&z=19",
+    "notes": "? casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 12,
+  "fields": {
+    "number": 12,
+    "name": "Atr\u00e1s da P\u00e7. Armindo Mazaro",
+    "map_url": "mid=1TlLBQnrZ3i0OFypyeml3xYRsPSk7eAIC&ll=-23.552760052894183%2C-46.5210175&z=19",
+    "notes": "? casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 13,
+  "fields": {
+    "number": 13,
+    "name": "Complexo industrial",
+    "map_url": "mid=1owb4edwcALsDKsuGJVe4MOqWkOFirIiG&ll=-23.55505290447221%2C-46.51989060484133&z=18",
+    "notes": "? casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 14,
+  "fields": {
+    "number": 14,
+    "name": "Antiga casa do irm\u00e3o Davi",
+    "map_url": "mid=1R3_UEAX6tf0J4syDZoUzoN5pcI6BHQsL&ll=-23.55562155598309%2C-46.52226214814757&z=19",
+    "notes": "? casas - N\u00c3O BATER na Rua Felisbina Ferreira, 261 (25/01/2019)"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 15,
+  "fields": {
+    "number": 15,
+    "name": "Posto Ipiranga (Av. 19 de Janeiro)",
+    "map_url": "mid=1Nk132r1j0D0gysJ_7Z9UZzN_V_LefHbg&ll=-23.5568356239723%2C-46.52296171560669&z=19",
+    "notes": "? casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 16,
+  "fields": {
+    "number": 16,
+    "name": "Comg\u00e1s",
+    "map_url": "mid=14flcZ_7o7i4IZIXZhuflAixAgtj4jfsS&ll=-23.55717778458173%2C-46.522031439217365&z=19",
+    "notes": "? casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 17,
+  "fields": {
+    "number": 17,
+    "name": "Parque Abandonado (Av. 19 de Janeiro)",
+    "map_url": "mid=110eZ2pNcHWQro8kJip9aF75B9oKPapCC&ll=-23.55746215724155%2C-46.51984423054962&z=18",
+    "notes": "? casas - N\u00c3O BATER na Rua Cururipe, 251 (25/01/2019)"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 18,
+  "fields": {
+    "number": 18,
+    "name": "Marmoaria Patriarca (Av. Itaquera)",
+    "map_url": "mid=1qpB8B1dNrD0JG8g6v_bk3U5kbrKxBuVh&ll=-23.555779130980852%2C-46.51845015575504&z=18",
+    "notes": "? casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 19,
+  "fields": {
+    "number": 19,
+    "name": "Biafarma (Av. Aricanduva)",
+    "map_url": "mid=1R0eV8vvdl1btb2MyIsDoy9x522r5yXEy&ll=-23.55489955480426%2C-46.51777377936097&z=18",
+    "notes": "? casas - Sem restri\u00e7\u00f5es"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 20,
+  "fields": {
+    "number": 20,
+    "name": "Posto de Gasolina Flor de Goi\u00e1s (Av. Aricanduva)",
+    "map_url": "mid=1MPmyFrJzwGhReiZ2qUIyPV8zXIFGWxPI&ll=-23.556381221006927%2C-46.517396901520556&z=19",
+    "notes": "? casas - N\u00c3O BATER na Travessa Silvio Mamprim, 25 (25/01/2019)"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 21,
+  "fields": {
+    "number": 21,
+    "name": "Esfiharia da Michele (Av. Itaquera)",
+    "map_url": "mid=1RXkkfIPNTaQiGRpNdfzU5oopxwoKhMko&ll=-23.55729485895534%2C-46.51838481408615&z=19",
+    "notes": "? casas - N\u00c3O BATER em: [1] Rua Joaquim Pedro Vila\u00e7a, 77 (25/01/2019) [2] Rua Frei Bernardo de Brito, 16 (25/01/2019) [3] Rua Dr. Paulo de Andrade Arantes, 52 (25/01.2019)"
+  }
+},
+{
+  "model": "api.territory",
+  "pk": 22,
+  "fields": {
+    "number": 22,
+    "name": "Shopping do Carro (Av. Itaquera)",
+    "map_url": "mid=1IXl4QvTRnZvsIz04EaYWrxYlGNuY3rn4&ll=-23.558003802753593%2C-46.51957849999998&z=19",
+    "notes": "? casas - N\u00c3O BATER em: [1] Rua Dami\u00e3o de G\u00f3is, 83 e 140 (25/01/2019) [3] Av. Itaquera, 154 (25/01/2019) [4] Rua Pr. Carlos Callioli, 83 (25/01/2019) [5] Rua Dorival Louren\u00e7o da Silva, 93 (25/01/2019) [6] Av. Itaquera, 154 (25/01/2019)"
+  }
+}
+]

@@ -1,9 +1,0 @@
-[
-    {
-        "model": "account.JWAdminCongregation",
-        "pk": 1,
-        "fields": {
-            "name": "Jd. Aricanduva"
-        }
-    }
-]
