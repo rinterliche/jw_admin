@@ -55,7 +55,8 @@
                 number: formData.get('number'),
                 name: formData.get('name'),
                 notes: formData.get('notes'),
-                map_url: formData.get('map_url')
+                map_url: formData.get('map_url'),
+                congregation: "{{ request.user.congregation }}"
             }
 
             $.ajax({

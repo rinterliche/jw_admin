@@ -93,7 +93,8 @@
                 leader: formData.get('leader'),
                 territory: formData.get('territory'),
                 status: formData.get('status'),
-                period: formData.get('period')
+                period: formData.get('period'),
+                congregation: "{{ request.user.congregation }}"
             }
 
             $.ajax({

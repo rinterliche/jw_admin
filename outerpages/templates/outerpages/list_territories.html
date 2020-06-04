@@ -56,9 +56,9 @@
                 <td>{% if territory.last_service_occurrence_date %}{{ territory.last_service_occurrence_date|date:'d/m/Y' }}{% else %}-{% endif %}</td>
                 <td>
                     {% if territory.is_forgotten %}
-                    <i class="material-icons text-danger">clear</i>
+                    <span class="badge badge-danger">Não</span>
                     {% else %}
-                    <i class="material-icons text-success">done</i>
+                    <span class="badge badge-success">Sim</span>
                     {% endif %}
                 </td>
                 <td>

@@ -84,7 +84,7 @@ def list_territories_view(request):
     for t in all_territories:
         t_last_service_occurrence = ServiceOccurrence.objects.filter(territory_id=t.id).last()
         last_service_occurrence_date = None
-        t_is_forgotten = None
+        t_is_forgotten = True
 
         if t_last_service_occurrence:
             date_30_days_ago = datetime.datetime.now() - timedelta(days=30)
