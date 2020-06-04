@@ -38,6 +38,7 @@
         </tr>
     </thead>
     <tbody>
+        {% if territories|length > 0 %}
         {% for service_occurrence in service_occurrences %}
         <tr>
             <td>{{ service_occurrence.id }}</td>
@@ -64,6 +65,11 @@
             </td>
         </tr>
         {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="7">Nenhuma saída de campo adicionada.</td>
+        </tr>
+        {% endif %}
     </tbody>
 </table>
 
