@@ -31,8 +31,11 @@
 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <div class="navbar-text mr-auto mt-2 mt-lg-0">
+                    {% if request.user.is_authenticated %}
                     Olá, {{ request.user.first_name }}
+                    {% endif %}
                 </div>
+                {% if request.user.is_authenticated %}
                 <ul class="navbar-nav my-2 my-lg-0">
                     <li class="nav-item">
                         <a class="nav-link {% if request.resolver_match.url_name == 'service_week' %}active{% endif %}"
@@ -66,6 +69,7 @@
                         <a class="nav-link" href="{% url 'logout' %}">Sair</a>
                     </li>
                 </ul>
+                {% endif %}
             </div>
         </nav>
 
