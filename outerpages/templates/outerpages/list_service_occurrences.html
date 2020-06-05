@@ -28,7 +28,6 @@
     </thead>
     <thead>
         <tr>
-            <th scope="col">ID</th>
             <th scope="col">Data</th>
             <th scope="col">Período</th>
             <th scope="col">Território</th>
@@ -41,7 +40,6 @@
         {% if service_occurrences|length > 0 %}
         {% for service_occurrence in service_occurrences %}
         <tr>
-            <td>{{ service_occurrence.id }}</td>
             <td>{{ service_occurrence.date | date:"d/m/y" }}</td>
             <td>
                 {% if service_occurrence.period == "M" %}Manhã
