@@ -1,11 +1,36 @@
 import json
+import json
+import datetime
+from datetime import timedelta
 
 from django.shortcuts import render
-import json, datetime
-from datetime import timedelta
+from django.template import RequestContext
+from django.views.defaults import page_not_found
 
 from api.models import Territory, ServiceOccurrence
 from account.models import JWAdminUser
+
+
+def render_error_response(request, code):
+    template = '{}.html'.format(code)
+
+    return render(request, template, {})
+
+
+def page_not_found_view(request, exception=None):
+    render_error_response(request, 404)
+
+
+def error_view(request, exception=None):
+    render_error_response(request, 500)
+
+
+def permission_denied_view(request, exception=None):
+    render_error_response(request, 403)
+
+
+def bad_request_view(request, exception=None):
+    render_error_response(request, 400)
 
 
 def service_week_screen_view(request):
@@ -177,7 +202,11 @@ def edit_service_occurrence_view(request, id):
         return render(
             request,
             "outerpages/edit_service_occurrence.html",
-            {"territories": territories, "leaders": leaders, "service_occurrence": service_occurrence}
+            {
+                "territories": territories,
+                "leaders": leaders,
+                "service_occurrence": service_occurrence
+            }
         )
     else:
         return render(request, "outerpages/not_authorized.html", {})

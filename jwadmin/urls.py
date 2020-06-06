@@ -30,8 +30,14 @@ from outerpages.views import (
      edit_territory_view,
      show_territory_view,
 )
-from account.views import registration_view, logout_view, login_view
+from account.views import (
+     registration_view,
+     logout_view,
+     login_view,
+)
 
+
+handler404 = 'outerpages.views.page_not_found_view'
 
 urlpatterns = [
     path('', login_view, name="home"),
