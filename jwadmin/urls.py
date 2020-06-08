@@ -20,24 +20,27 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 
 from outerpages.views import (
-     service_week_screen_view,
-     list_service_occurrences_view,
-     new_service_occurrence_view,
-     edit_service_occurrence_view,
-     show_service_occurrence_view,
-     list_territories_view,
-     new_territory_view,
-     edit_territory_view,
-     show_territory_view,
+    service_week_screen_view,
+    list_service_occurrences_view,
+    new_service_occurrence_view,
+    edit_service_occurrence_view,
+    show_service_occurrence_view,
+    list_territories_view,
+    new_territory_view,
+    edit_territory_view,
+    show_territory_view,
 )
 from account.views import (
-     registration_view,
-     logout_view,
-     login_view,
+    registration_view,
+    logout_view,
+    login_view,
 )
 
 
 handler404 = 'outerpages.views.page_not_found_view'
+handler500 = 'outerpages.views.error_view'
+handler403 = 'outerpages.views.permission_denied_view'
+handler400 = 'outerpages.views.bad_request_view'
 
 urlpatterns = [
     path('', login_view, name="home"),

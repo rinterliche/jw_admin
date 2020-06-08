@@ -11,26 +11,20 @@ from api.models import Territory, ServiceOccurrence
 from account.models import JWAdminUser
 
 
-def render_error_response(request, code):
-    template = '{}.html'.format(code)
-
-    return render(request, template, {})
-
-
 def page_not_found_view(request, exception=None):
-    render_error_response(request, 404)
+    return render(request,"outerpages/404.html", {})
 
 
 def error_view(request, exception=None):
-    render_error_response(request, 500)
+    return render(request, "outerpages/500.html", {})
 
 
 def permission_denied_view(request, exception=None):
-    render_error_response(request, 403)
+    return render(request, "outerpages/403.html", {})
 
 
 def bad_request_view(request, exception=None):
-    render_error_response(request, 400)
+    return render(request, "outerpages/400.html", {})
 
 
 def service_week_screen_view(request):

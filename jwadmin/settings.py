@@ -26,9 +26,9 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DEBUG']
+DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1:8000']
+ALLOWED_HOSTS = ['127.0.0.1', '*']
 
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 SENDGRID_API_KEY = os.environ['SENDGRID_API_KEY']
