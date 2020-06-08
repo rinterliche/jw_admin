@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import django_heroku
 from dotenv import load_dotenv
+import mimetypes
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -38,8 +39,9 @@ EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = os.environ['SENDGRID_DEFAULT_FROM_EMAIL']
-SENDGRID_SANDBOX_MODE_IN_DEBUG = os.environ['DEBUG']
-SENDGRID_ECHO_TO_STDOUT = os.environ['DEBUG']
+
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+SENDGRID_ECHO_TO_STDOUT = False
 
 
 # Application definition
@@ -154,3 +156,5 @@ REST_FRAMEWORK = {
 }
 
 django_heroku.settings(locals())
+
+mimetypes.add_type("text/css", ".css", True)

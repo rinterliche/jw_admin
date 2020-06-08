@@ -13,12 +13,10 @@
             integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
         {% load static %}
+        <link rel="stylesheet" type="text/css" charset="utf-8" href="{% static 'main/css/base.css'%}">
         {% load compress %}
-        {% compress css %}
-        <link rel="stylesheet" type="text/css" href="{% static 'main/css/base.css'%}">
-        {% endcompress css %}
         {% compress js %}
-        <script src="{% static 'main/js/base.js'%}"></script>
+        <script type="text/javascript" charset="utf-8" src="{% static 'main/js/base.js'%}"></script>
         {% endcompress js %}
     </head>
     <body class="h-100 w-100">
