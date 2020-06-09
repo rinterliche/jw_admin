@@ -23,6 +23,7 @@ importlib-metadata==1.6.0
 isort==4.3.21
 lazy-object-proxy==1.4.1
 mccabe==0.6.1
+newrelic==5.14.0.142
 psycopg2==2.8.5
 psycopg2-binary==2.8.5
 pycodestyle==2.5.0

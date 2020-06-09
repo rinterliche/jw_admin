@@ -1,1 +1,1 @@
-web: gunicorn jwadmin.wsgi
+web: newrelic-admin run-program gunicorn jwadmin.wsgi
