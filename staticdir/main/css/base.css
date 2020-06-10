@@ -67,3 +67,7 @@ html, body {
 .ui-datepicker th {
 	font-size: 12px;
 }
+
+.is_today td {
+	background: #b4deb4;
+}

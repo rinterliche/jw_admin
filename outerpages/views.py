@@ -1,7 +1,7 @@
 import json
 import json
 import datetime
-from datetime import timedelta
+from datetime import (timedelta, date)
 
 from django.shortcuts import render
 from django.template import RequestContext
@@ -69,7 +69,7 @@ def service_week_screen_view(request):
                         "leader": current_week_service_occurrence.leader.first_name,
                         "territory_number": current_week_service_occurrence.territory.number,
                         "territory_name": current_week_service_occurrence.territory.name,
-                        "is_today": current_week_date == datetime.datetime.now(),
+                        "is_today": current_week_date == date.today(),
                         "status": current_week_service_occurrence.status,
                     }
 
@@ -82,6 +82,7 @@ def service_week_screen_view(request):
                     "leader": "-",
                     "territory_number": "-",
                     "territory_name": "-",
+                    "is_today": current_week_date == date.today(),
                     "status": "-",
                 }
 
