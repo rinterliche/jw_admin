@@ -71,3 +71,7 @@ html, body {
 .is_today td {
 	background: #b4deb4;
 }
+
+.table {
+	margin-bottom: 0;
+}
