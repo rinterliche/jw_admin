@@ -69,6 +69,7 @@ def service_week_screen_view(request):
                         "leader": current_week_service_occurrence.leader.first_name,
                         "territory_number": current_week_service_occurrence.territory.number,
                         "territory_name": current_week_service_occurrence.territory.name,
+                        "is_today": current_week_date == datetime.datetime.now(),
                         "status": current_week_service_occurrence.status,
                     }
 
