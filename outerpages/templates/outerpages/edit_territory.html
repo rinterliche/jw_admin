@@ -8,6 +8,8 @@
 <form id="form-edit-territory" class="p-3">
     {% csrf_token %}
 
+    <input type="hidden" name="congregation" value="{{ request.user.congregation.id }}">
+
     <div class="form-row">
         <div class="col-md">
             <div class="form-group">
@@ -59,7 +61,7 @@
                 name: formData.get('name'),
                 notes: formData.get('notes'),
                 map_url: formData.get('map_url'),
-                congregation: "{{ request.user.congregation }}"
+                congregation: formData.get('congregation'),
             }
 
             $.ajax({

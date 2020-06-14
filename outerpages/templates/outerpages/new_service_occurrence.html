@@ -8,6 +8,8 @@
 <form id="form-new-service-occurrence" class="p-3">
     {% csrf_token %}
 
+    <input type="hidden" name="congregation" value="{{ request.user.congregation.id }}">
+
     <div class="form-row">
         <div class="col-md">
             <div class="form-group">
@@ -84,7 +86,7 @@
                 territory: formData.get('territory'),
                 status: formData.get('status'),
                 period: formData.get('period'),
-                congregation: "{{ request.user.congregation }}"
+                congregation: formData.get('congregation')
             }
 
             $.ajax({
@@ -98,7 +100,7 @@
                     xhr.setRequestHeader("X-CSRFToken", formData.get('csrfmiddlewaretoken'));
                 },
                 success: function (data, textStatus) {
-                    alert("Saída de campo cadastrada com sucesso!")
+                    alert("Saída de campo cadastrada com sucesso!");
                     location.replace("{{ HTTP_HOST }}/service_occurrence/list");
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {

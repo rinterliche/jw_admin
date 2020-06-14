@@ -8,7 +8,7 @@ class TerritorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Territory
-        fields = ['id', 'number', 'name', 'notes', 'map_url',]
+        fields = ['id', 'number', 'name', 'notes', 'map_url', 'congregation',]
 
 
 class JWAdminUserSerializer(serializers.ModelSerializer):
@@ -25,7 +25,8 @@ class ServiceOccurrenceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ServiceOccurrence
-        fields = ['id', 'date', 'leader', 'territory', 'status', 'period',]
+        fields = ['id', 'date', 'leader', 'territory',
+                  'status', 'period', 'congregation',]
 
     def to_representation(self, instance):
         self.fields['leader'] = JWAdminUserSerializer(read_only=True)
