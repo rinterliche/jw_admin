@@ -162,12 +162,12 @@ def new_territory_view(request):
     return render(request, "outerpages/not_authorized.html", {})
 
 
-def show_territory_view(request, _id):
+def show_territory_view(request, id):
     """
     Provide show territory page resources, if user is authenticated
     """
     if request.user.is_authenticated:
-        territory = Territory.objects.get(id=_id)
+        territory = Territory.objects.get(id=id)
         last_service_occurrences = ServiceOccurrence.objects.filter(
             territory_id=territory.id)[:5]
         return render(
