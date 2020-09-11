@@ -1,6 +1,5 @@
 from django.db import models
 from account.models import JWAdminUser, JWAdminCongregation
-from enum import Enum
 
 
 class Territory(models.Model):

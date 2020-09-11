@@ -1,9 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
-from django.utils.translation import gettext as _
 
 
 class JWAdminCongregation(models.Model):
+    """
+    Structure for congregation model
+    """
     class Meta:
         verbose_name = "Congregação"
         verbose_name_plural = "Congregações"
@@ -15,6 +17,9 @@ class JWAdminCongregation(models.Model):
 
 
 class JWAdminUserManager(BaseUserManager):
+    """
+    Structure for user manager model
+    """
     class Meta:
         verbose_name = "Super user"
         verbose_name_plural = "Super users"
@@ -56,6 +61,9 @@ class JWAdminUserManager(BaseUserManager):
 
 
 class JWAdminUser(AbstractBaseUser):
+    """
+    Structure for user model
+    """
     class Meta:
         verbose_name = "Usuário"
         verbose_name_plural = "Usuários"
@@ -69,7 +77,12 @@ class JWAdminUser(AbstractBaseUser):
     is_admin = models.BooleanField(default=False)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    congregation = models.ForeignKey(JWAdminCongregation, on_delete=models.CASCADE, blank=True, null=True)
+    congregation = models.ForeignKey(
+        JWAdminCongregation,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
 
     objects = JWAdminUserManager()
 
@@ -79,11 +92,13 @@ class JWAdminUser(AbstractBaseUser):
     def __str__(self):
         return "User name: {} email: {}".format(self.first_name, self.email)
 
-    def has_perm(self, perm, obj=None):
+    @staticmethod
+    def has_perm():
         "Does the user have a specific permission?"
         return True
 
-    def has_module_perms(self, app_label):
+    @staticmethod
+    def has_module_perms():
         "Does the user have permissions to view the app `app_label`?"
         return True
 
