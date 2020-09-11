@@ -182,12 +182,12 @@ def show_territory_view(request, id):
     return render(request, "outerpages/not_authorized.html", {})
 
 
-def edit_territory_view(request, _id):
+def edit_territory_view(request, id):
     """
     Provide edit territory page resources, if user is authenticated
     """
     if request.user.is_authenticated and request.user.is_staff:
-        territory = Territory.objects.get(id=_id)
+        territory = Territory.objects.get(id=id)
         return render(request, "outerpages/edit_territory.html", {"territory": territory})
 
     return render(request, "outerpages/not_authorized.html", {})
