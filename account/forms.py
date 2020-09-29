@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 from django.utils.translation import ugettext, ugettext_lazy as _
+from django.db.utils import OperationalError
 
 from account.models import JWAdminUser, JWAdminCongregation
 
@@ -19,8 +20,16 @@ class RegistrationForm(UserCreationForm):
     last_name.widget.attrs.update(
         {"class": "form-control", "placeholder": "Digite seu último nome", "autocomplete": "off"})
 
-    congregation = forms.ChoiceField(label="Congregação", choices=[(0, 'Selecione sua congregação')] + [(
-        congregation.id, congregation.name) for congregation in JWAdminCongregation.objects.all()])
+    try:
+        congregation_choises = [(congregation.id, congregation.name)
+                                for congregation in JWAdminCongregation.objects.all()]
+    except OperationalError:
+        congregation_choises = []
+
+    congregation = forms.ChoiceField(
+        label="Congregação", choices=[(0, 'Selecione sua congregação')] +
+        congregation_choises
+    )
     congregation.widget.attrs.update(
         {"class": "form-control"})
 
