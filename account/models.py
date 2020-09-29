@@ -24,7 +24,7 @@ class JWAdminUserManager(BaseUserManager):
         verbose_name = "Super user"
         verbose_name_plural = "Super users"
 
-    def create_user(self, email, first_name, last_name, password=None):
+    def create_user(self, email, first_name, last_name, congregation, password=None):
         """
         Creates and saves a User with the given email and password.
         """
@@ -39,6 +39,7 @@ class JWAdminUserManager(BaseUserManager):
             email=self.normalize_email(email),
             first_name=first_name,
             last_name=last_name,
+            congregation=congregation,
         )
 
         user.set_password(password)
@@ -54,6 +55,7 @@ class JWAdminUserManager(BaseUserManager):
             password=password,
             first_name=first_name,
             last_name=last_name,
+            congregation=JWAdminCongregation.objects.get(id=1),
         )
         user.is_admin = True
         user.save(using=self._db)
