@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 
 
 class JWAdminCongregation(models.Model):
@@ -62,7 +62,7 @@ class JWAdminUserManager(BaseUserManager):
         return user
 
 
-class JWAdminUser(AbstractBaseUser):
+class JWAdminUser(AbstractBaseUser, PermissionsMixin):
     """
     Structure for user model
     """
@@ -94,17 +94,18 @@ class JWAdminUser(AbstractBaseUser):
     def __str__(self):
         return "User name: {} email: {}".format(self.first_name, self.email)
 
-    @staticmethod
-    def has_perm():
-        "Does the user have a specific permission?"
+    def has_perm(self, perm, obj=None):
         return True
 
-    @staticmethod
-    def has_module_perms():
-        "Does the user have permissions to view the app `app_label`?"
+    def has_module_perms(self, app_label):
         return True
 
     @property
     def is_staff(self):
         "Is the user a member of staff?"
+        return self.is_admin
+
+    @property
+    def is_superuser(self):
+        "Is the user a member of superuser?"
         return self.is_admin
