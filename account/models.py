@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 
 class JWAdminCongregation(models.Model):
@@ -62,7 +62,7 @@ class JWAdminUserManager(BaseUserManager):
         return user
 
 
-class JWAdminUser(AbstractBaseUser, PermissionsMixin):
+class JWAdminUser(AbstractBaseUser):
     """
     Structure for user model
     """
@@ -103,9 +103,4 @@ class JWAdminUser(AbstractBaseUser, PermissionsMixin):
     @property
     def is_staff(self):
         "Is the user a member of staff?"
-        return self.is_admin
-
-    @property
-    def is_superuser(self):
-        "Is the user a member of superuser?"
         return self.is_admin
