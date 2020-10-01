@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
-from django.utils.translation import ugettext, ugettext_lazy as _
 from django.db.utils import OperationalError
 
 from account.models import JWAdminUser, JWAdminCongregation
@@ -55,6 +54,46 @@ class RegistrationForm(UserCreationForm):
         congregation_id = self.cleaned_data['congregation']
         congregation = JWAdminCongregation.objects.get(id=congregation_id)
         return congregation
+
+
+class UserChangeForm(forms.ModelForm):
+    email = forms.EmailField(max_length=255, label="Email")
+    email.widget.attrs.update(
+        {"class": "form-control", "placeholder": "Digite seu email", "autocomplete": "off"})
+
+    first_name = forms.CharField(max_length=50, label="Primeiro nome")
+    first_name.widget.attrs.update(
+        {"class": "form-control", "placeholder": "Digite seu primeiro nome", "autocomplete": "off"})
+
+    last_name = forms.CharField(max_length=50, label="Último nome")
+    last_name.widget.attrs.update(
+        {"class": "form-control", "placeholder": "Digite seu último nome", "autocomplete": "off"})
+
+    try:
+        congregation_choises = [(congregation.id, congregation.name)
+                                for congregation in JWAdminCongregation.objects.all()]
+    except OperationalError:
+        congregation_choises = []
+
+    congregation = forms.ChoiceField(
+        label="Congregação", choices=[(0, 'Selecione sua congregação')] +
+        congregation_choises
+    )
+    congregation.widget.attrs.update(
+        {"class": "form-control"})
+
+    class Meta:
+        model = JWAdminUser
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(UserChangeForm, self).__init__(*args, **kwargs)
+        f = self.fields.get('user_permissions', None)
+        if f is not None:
+            f.queryset = f.queryset.select_related('content_type')
+
+    def clean_password(self):
+        return self.initial["password"]
 
 
 class AuthenticationForm(forms.ModelForm):

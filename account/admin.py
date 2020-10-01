@@ -1,10 +1,10 @@
-from django import forms
 from django.contrib import admin
-from django.contrib.auth.models import Group
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from django import forms
+from django.contrib.auth import admin as auth_admin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
 from .models import JWAdminUser, JWAdminCongregation
+from .forms import RegistrationForm, UserChangeForm
 
 
 class JWAdminCongregationAdmin(admin.ModelAdmin):
@@ -17,7 +17,13 @@ class JWAdminCongregationAdmin(admin.ModelAdmin):
     fieldsets = ()
 
 
-class JWAdminUserAdmin(BaseUserAdmin):
+class JWAdminUserAdmin(auth_admin.UserAdmin):
+    # The forms to add and change user instances
+    form = UserChangeForm
+    add_form = RegistrationForm
+    change_password_form = auth_admin.AdminPasswordChangeForm
+
+
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
@@ -30,11 +36,17 @@ class JWAdminUserAdmin(BaseUserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2'),
+            'fields': ('first_name', 'last_name', 'congregation', 'email', 'password1', 'password2'),
         }),
     )
-    search_fields = ('email',)
-    ordering = ('email',)
+    fieldsets = (
+        (None, {'fields': ('email', 'password')}),
+        ('Personal info', {'fields': ('first_name', 'last_name',)}),
+        ('Permissions', {'fields': ('is_active',)}),
+        ('Important dates', {'fields': ('last_login',)}),
+    )
+    search_fields = ('email', 'first_name', 'last_name', 'congregation',)
+    ordering = ('email', 'first_name', 'last_name', 'congregation',)
     filter_horizontal = ()
 
 
