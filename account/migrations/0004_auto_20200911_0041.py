@@ -7,13 +7,18 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('account', '0003_auto_20200911_0040'),
+        ("account", "0003_auto_20200911_0040"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='jwadminuser',
-            name='congregation',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='account.JWAdminCongregation'),
+            model_name="jwadminuser",
+            name="congregation",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="account.JWAdminCongregation",
+            ),
         ),
     ]

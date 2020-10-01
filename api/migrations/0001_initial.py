@@ -15,33 +15,72 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Territory',
+            name="Territory",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('number', models.PositiveIntegerField()),
-                ('name', models.CharField(default='', max_length=50)),
-                ('map_url', models.CharField(default='', max_length=250)),
-                ('notes', models.TextField(default='')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("number", models.PositiveIntegerField()),
+                ("name", models.CharField(default="", max_length=50)),
+                ("map_url", models.CharField(default="", max_length=250)),
+                ("notes", models.TextField(default="")),
             ],
             options={
-                'verbose_name': 'Território',
-                'verbose_name_plural': 'Territórios',
+                "verbose_name": "Território",
+                "verbose_name_plural": "Territórios",
             },
         ),
         migrations.CreateModel(
-            name='ServiceOccurrence',
+            name="ServiceOccurrence",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('date', models.DateField()),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('status', models.CharField(choices=[('N', 'N'), ('I', 'I'), ('F', 'F'), ('C', 'C')], default='F', max_length=1)),
-                ('period', models.CharField(choices=[('M', 'M'), ('A', 'A')], default='M', max_length=1)),
-                ('leader', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('territory', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='api.Territory')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("date", models.DateField()),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[("N", "N"), ("I", "I"), ("F", "F"), ("C", "C")],
+                        default="F",
+                        max_length=1,
+                    ),
+                ),
+                (
+                    "period",
+                    models.CharField(
+                        choices=[("M", "M"), ("A", "A")], default="M", max_length=1
+                    ),
+                ),
+                (
+                    "leader",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "territory",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="api.Territory"
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Saída de campo',
-                'verbose_name_plural': 'Saídas de campo',
+                "verbose_name": "Saída de campo",
+                "verbose_name_plural": "Saídas de campo",
             },
         ),
     ]

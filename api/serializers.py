@@ -4,31 +4,50 @@ from rest_framework import serializers
 
 
 class TerritorySerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(label='ID', read_only=True)
+    id = serializers.IntegerField(label="ID", read_only=True)
 
     class Meta:
         model = Territory
-        fields = ['id', 'number', 'name', 'notes', 'map_url', 'congregation',]
+        fields = [
+            "id",
+            "number",
+            "name",
+            "notes",
+            "map_url",
+            "congregation",
+        ]
 
 
 class JWAdminUserSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(label='ID', read_only=True)
+    id = serializers.IntegerField(label="ID", read_only=True)
 
     class Meta:
         model = JWAdminUser
-        fields = ['id', 'first_name', 'last_name', 'email',]
+        fields = [
+            "id",
+            "first_name",
+            "last_name",
+            "email",
+        ]
 
 
 class ServiceOccurrenceSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField(label='ID', read_only=True)
+    id = serializers.IntegerField(label="ID", read_only=True)
     date = serializers.DateField()
 
     class Meta:
         model = ServiceOccurrence
-        fields = ['id', 'date', 'leader', 'territory',
-                  'status', 'period', 'congregation',]
+        fields = [
+            "id",
+            "date",
+            "leader",
+            "territory",
+            "status",
+            "period",
+            "congregation",
+        ]
 
     def to_representation(self, instance):
-        self.fields['leader'] = JWAdminUserSerializer(read_only=True)
-        self.fields['territory'] = TerritorySerializer(read_only=True)
+        self.fields["leader"] = JWAdminUserSerializer(read_only=True)
+        self.fields["territory"] = TerritorySerializer(read_only=True)
         return super(ServiceOccurrenceSerializer, self).to_representation(instance)

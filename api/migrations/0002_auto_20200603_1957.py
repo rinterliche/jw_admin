@@ -7,19 +7,27 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('account', '0002_jwadminuser_congregation'),
-        ('api', '0001_initial'),
+        ("account", "0002_jwadminuser_congregation"),
+        ("api", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='serviceoccurrence',
-            name='congregation',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='account.JWAdminCongregation'),
+            model_name="serviceoccurrence",
+            name="congregation",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="account.JWAdminCongregation",
+            ),
         ),
         migrations.AddField(
-            model_name='territory',
-            name='congregation',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to='account.JWAdminCongregation'),
+            model_name="territory",
+            name="congregation",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="account.JWAdminCongregation",
+            ),
         ),
     ]

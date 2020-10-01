@@ -8,10 +8,12 @@ class Territory(models.Model):
         verbose_name_plural = "Territórios"
 
     number = models.PositiveIntegerField()
-    name = models.CharField(max_length=50, default='')
-    map_url = models.CharField(max_length=250, default='')
-    notes = models.TextField(default='')
-    congregation = models.ForeignKey(JWAdminCongregation, on_delete=models.CASCADE, default=1)
+    name = models.CharField(max_length=50, default="")
+    map_url = models.CharField(max_length=250, default="")
+    notes = models.TextField(default="")
+    congregation = models.ForeignKey(
+        JWAdminCongregation, on_delete=models.CASCADE, default=1
+    )
 
     def __str__(self):
         return "Territory number: {}".format(self.number)
@@ -22,25 +24,27 @@ class ServiceOccurrence(models.Model):
         verbose_name = "Saída de campo"
         verbose_name_plural = "Saídas de campo"
 
-    NOT_INITIALIZED = 'N'
-    INITIALIZED = 'I'
-    FINALIZED = 'F'
-    CONTINUED = 'C'
+    NOT_INITIALIZED = "N"
+    INITIALIZED = "I"
+    FINALIZED = "F"
+    CONTINUED = "C"
     STATUSES = (
-        (NOT_INITIALIZED, 'N'),
-        (INITIALIZED, 'I'),
-        (FINALIZED, 'F'),
-        (CONTINUED, 'C'),
+        (NOT_INITIALIZED, "N"),
+        (INITIALIZED, "I"),
+        (FINALIZED, "F"),
+        (CONTINUED, "C"),
     )
 
-    MOURNING = 'M'
-    AFTERNOON = 'A'
+    MOURNING = "M"
+    AFTERNOON = "A"
     PERIODS = (
-        (MOURNING, 'M'),
-        (AFTERNOON, 'A'),
+        (MOURNING, "M"),
+        (AFTERNOON, "A"),
     )
 
-    congregation = models.ForeignKey(JWAdminCongregation, on_delete=models.CASCADE, default=1)
+    congregation = models.ForeignKey(
+        JWAdminCongregation, on_delete=models.CASCADE, default=1
+    )
     leader = models.ForeignKey(JWAdminUser, on_delete=models.CASCADE)
     territory = models.ForeignKey(Territory, on_delete=models.CASCADE)
     date = models.DateField()
@@ -57,4 +61,6 @@ class ServiceOccurrence(models.Model):
     )
 
     def __str__(self):
-        return "Service Occurrence made at: {}, by {}".format(self.territory.number, self.leader)
+        return "Service Occurrence made at: {}, by {}".format(
+            self.territory.number, self.leader
+        )

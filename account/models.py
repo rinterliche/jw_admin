@@ -1,11 +1,16 @@
 from django.db import models
-from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
+from django.contrib.auth.models import (
+    BaseUserManager,
+    AbstractBaseUser,
+    PermissionsMixin,
+)
 
 
 class JWAdminCongregation(models.Model):
     """
     Structure for congregation model
     """
+
     class Meta:
         verbose_name = "Congregação"
         verbose_name_plural = "Congregações"
@@ -20,6 +25,7 @@ class JWAdminUserManager(BaseUserManager):
     """
     Structure for user manager model
     """
+
     class Meta:
         verbose_name = "Super user"
         verbose_name_plural = "Super users"
@@ -29,11 +35,11 @@ class JWAdminUserManager(BaseUserManager):
         Creates and saves a User with the given email and password.
         """
         if not email:
-            raise ValueError('Users must have an email address')
+            raise ValueError("Users must have an email address")
         if not first_name:
-            raise ValueError('Users must have an first name')
+            raise ValueError("Users must have an first name")
         if not last_name:
-            raise ValueError('Users must have an last name')
+            raise ValueError("Users must have an last name")
 
         user = self.model(
             email=self.normalize_email(email),
@@ -66,12 +72,13 @@ class JWAdminUser(AbstractBaseUser):
     """
     Structure for user model
     """
+
     class Meta:
         verbose_name = "Usuário"
         verbose_name_plural = "Usuários"
 
     email = models.EmailField(
-        verbose_name='email address',
+        verbose_name="email address",
         max_length=255,
         unique=True,
     )
@@ -80,16 +87,16 @@ class JWAdminUser(AbstractBaseUser):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     congregation = models.ForeignKey(
-        JWAdminCongregation,
-        on_delete=models.CASCADE,
-        blank=True,
-        null=True
+        JWAdminCongregation, on_delete=models.CASCADE, blank=True, null=True
     )
 
     objects = JWAdminUserManager()
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name',]
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = [
+        "first_name",
+        "last_name",
+    ]
 
     def __str__(self):
         return "User name: {} email: {}".format(self.first_name, self.email)
